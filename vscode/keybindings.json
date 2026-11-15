@@ -1,0 +1,165 @@
+// Place your key bindings in this file to override the defaultsauto[]i
+[
+    // Sympy setup
+    {
+        "key": "shift+e",
+        "command": "latex-sympy-calculator.equal",
+        "when": "editorHasSelection && editorTextFocus && resourceLangId == 'latex' || editorHasSelection && editorTextFocus && resourceLangId == 'markdown'"
+    },
+    {
+        "key": "shift+alt+cmd+e",
+        "command": "-latex-sympy-calculator.equal",
+        "when": "editorHasSelection && editorTextFocus && resourceLangId == 'latex' || editorHasSelection && editorTextFocus && resourceLangId == 'markdown'"
+    },
+    {
+        "key": "shift+r",
+        "command": "latex-sympy-calculator.replace",
+        "when": "editorHasSelection && editorTextFocus && resourceLangId == 'latex' || editorHasSelection && editorTextFocus && resourceLangId == 'markdown'"
+    },
+    {
+        "key": "shift+alt+cmd+r",
+        "command": "-latex-sympy-calculator.replace",
+        "when": "editorHasSelection && editorTextFocus && resourceLangId == 'latex' || editorHasSelection && editorTextFocus && resourceLangId == 'markdown'"
+    },
+    // Auto Correction setup
+    {
+        "key": "cmd+l",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "sequence": [
+                "cSpell.goToPreviousSpellingIssue",
+                {
+                    "command": "editor.action.codeAction",
+                    "args": {
+                        "kind": "quickfix",
+                        "apply": "first"
+                    }
+                },
+                "cursorUndo",
+            ]
+        }
+    },
+    {
+        "key": "cmd+shift+k",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "sequence": [
+                "editor.action.marker.prev",
+                {
+                    "command": "editor.action.codeAction",
+                    "args": {
+                        "kind": "quickfix",
+                        "apply": "first"
+                    }
+                },
+                "cursorUndo",
+            ]
+        }
+    },
+    // Inkscape setup
+    {
+        "key": "ctrl+f",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "sequence": [
+                "editor.action.clipboardCopyAction",
+                "editor.action.insertLineAfter",
+                "cursorUp",
+                "editor.action.deleteLines",
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "name": "incfig"
+                    }
+                },
+                {
+                    "command": "command-runner.run",
+                    "args": {
+                        "command": "inkscapeCreate",
+                    },
+                    "terminal": {
+                        "name": "runCommand",
+                        "shellArgs": [],
+                        "autoClear": true,
+                        "autoFocus": false
+                    }
+                },
+            ]
+        },
+        "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl && vim.mode == 'Insert'"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "command-runner.run",
+        "args": {
+            "command": "inkscapeEdit",
+            "terminal": {
+                "name": "runCommand",
+                "shellArgs": [],
+                "autoClear": true,
+                "autoFocus": false
+            }
+        },
+        "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "command-runner.run",
+        "args": {
+            "command": "inkscapeStart",
+            "terminal": {
+                "name": "runCommand",
+                "shellArgs": [],
+                "autoClear": true,
+                "autoFocus": false
+            }
+        },
+        "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl && vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "command-runner.run",
+        "args": {
+            "command": "quiver",
+            "terminal": {
+                "name": "runCommand",
+                "shellArgs": [],
+                "autoClear": true,
+                "autoFocus": false
+            }
+        },
+        "when": "editorTextFocus"
+    },
+    // MinerU 快捷键配置
+    {
+        "key": "alt+shift+m",
+        "command": "workbench.action.tasks.runTask",
+        "args": "MinerU Gradio (ModelScope)"
+    },
+    {
+        "key": "alt+shift+h",
+        "command": "workbench.action.tasks.runTask",
+        "args": "MinerU Gradio (HuggingFace)"
+    },
+    {
+        "key": "alt+shift+p",
+        "command": "workbench.action.tasks.runTask",
+        "args": "MinerU Parse PDF (ModelScope)"
+    },
+    // Snippet placeholder navigation in suggestion widget (Priority Fix)
+    {
+        "key": "tab",
+        "command": "jumpToNextSnippetPlaceholder",
+        "when": "suggestWidgetVisible && textInputFocus && inSnippetMode"
+    },
+    {
+        "key": "shift+tab",
+        "command": "jumpToPrevSnippetPlaceholder",
+        "when": "suggestWidgetVisible && textInputFocus && inSnippetMode"
+    },
+    {
+        "key": "tab",
+        "command": "-acceptSelectedSuggestion",
+        "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+    } 
+]

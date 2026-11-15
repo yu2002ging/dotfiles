@@ -1,0 +1,8 @@
+brew "neovim"
+brew "starship"
+brew "fzf"
+brew "ripgrep"
+brew "nvm"
+cask "wezterm"
+cask "visual-studio-code"
+cask "font-hack-nerd-font"
