@@ -1,2 +1,3 @@
 # 对.zshrc文件脱敏
 .zshrc filter=anonymize
+.json filter=anonymize
