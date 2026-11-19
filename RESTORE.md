@@ -1,20 +1,15 @@
-# 在新 Mac 上恢复开发配置
+# 新 Mac 恢复
 
-这份仓库保存 Neovim、WezTerm、Starship、Zsh 和 VS Code 的配置快照。应用和插件由各自的工具重新下载。
+1. 安装 Homebrew、Git、Python 3，然后克隆此仓库到一个长期保留的目录。
+2. 按需运行 `brew bundle --file=Brewfile` 安装工具；下载时间不计入链接安装时间。
+3. 运行 `python3 scripts/install.py --dry-run` 审阅，然后运行 `python3 scripts/install.py`。
+4. 参考 `zsh/local.zsh.example`，在 `~/.config/zsh/local.zsh` 中填写本机密钥和代理。
+5. 调整 Zsh 中的 TeX Live 版本等设置。
+6. 打开 Neovim 后运行 `:Lazy restore`。首次运行会下载插件；语言服务器由 Mason 管理。
+7. 在 VS Code 中登录账户，启用内置 Settings Sync 恢复设置、快捷键、snippets 和扩展。
 
-1. 安装 Homebrew，在仓库根目录运行 `brew bundle --file=Brewfile`。清单面向当前的 Apple Silicon Mac。
-2. 先备份新机上已有的同名文件，再按下表复制配置。
-3. 检查 Zsh 和 VS Code 配置里的本机路径，再打开新终端。原机配置包含 Anaconda、TeX Live、自定义目录及代理等设置。按新机实际情况调整；如果本机代理不用了，删掉对应代理变量。API 密钥和自定义 API 服务地址从原机单独配置。
-4. 打开 Neovim，等 lazy.nvim 安装完成，再用 `:Lazy restore` 按锁文件恢复插件。Mason 会根据 Neovim 配置安装语言服务器。
-5. 在 VS Code 中执行 Shell Command: Install 'code' command in PATH，然后在仓库里运行 `while IFS= read -r id; do code --install-extension "$id"; done < vscode/extensions.txt`。清单记录扩展 ID，安装版本由 VS Code 决定。
+8. 新开终端，运行 `python3 scripts/doctor.py`，检查命令补全、Ctrl-R、z/zi、提示符与自动建议。
 
-| 仓库中 | 复制到 |
-|---|---|
-| `nvim/` 内的文件 | `~/.config/nvim/` |
-| `wezterm/wezterm.lua` | `~/.config/wezterm/wezterm.lua` |
-| `starship/starship.toml` | `~/.config/starship.toml` |
-| `zsh/.zshrc`、`zsh/.zprofile` | `~/.zshrc`、`~/.zprofile` |
-| `zsh/terminal.zsh` | `~/.config/zsh/terminal.zsh` |
-| `vscode/settings.json`、`vscode/keybindings.json`、`vscode/snippets/` | `~/Library/Application Support/Code/User/` 下的对应位置 |
-
-如需恢复 Zsh 自动建议，将 [zsh-autosuggestions v0.7.1](https://github.com/zsh-users/zsh-autosuggestions/releases/tag/v0.7.1) 中的 `zsh-autosuggestions.zsh` 下载到 `~/.config/zsh/`，然后新开终端。原配置引用的 Conda 环境及其他第三方工具可按需重新安装。
+Brewfile 记录基础工具，不包含完整 Anaconda、TeX Live、JDK、GHCup 和全部语言运行时。
+现有 Zsh 仍保留这些工具的初始化方式；在新机器上应按实际安装情况调整。
+目前 terminal.zsh 的 fzf、zoxide、Starship 路径面向 Apple Silicon Homebrew。

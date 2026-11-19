@@ -23,3 +23,12 @@ vim.diagnostic.config({
     virtual_text = true,
     update_in_insert = true,
 })
+
+
+vim.opt.ignorecase = true               -- blink, 补全大小写不敏感
+vim.opt.smartcase = true                -- blink, 如果明确输入大写,则开启大小写敏感
+
+vim.api.nvim_create_autocmd({"BufRead","BufNewFile"}, {
+    pattern = "*.plist",
+    command = "setfiletype xml",
+})

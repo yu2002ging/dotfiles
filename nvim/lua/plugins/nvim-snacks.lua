@@ -22,5 +22,6 @@ return {
   },
   keys = {
       { "<leader>f", ":lua Snacks.picker.files()<CR>", silent = true},
+      { "<leader>e", ":lua Snacks.explorer.open()<CR>", silent = true},
   }
 }

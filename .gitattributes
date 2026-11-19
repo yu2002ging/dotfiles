@@ -1,3 +1,2 @@
-# 对.zshrc文件脱敏
-.zshrc filter=anonymize
-.json filter=anonymize
+# Keep configuration text readable in diffs; secrets live outside Git.
+* text=auto

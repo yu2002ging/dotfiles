@@ -1,0 +1,7 @@
+# Copy to ~/.config/zsh/local.zsh (outside this repository), then edit.
+# export ANTHROPIC_API_KEY='your-key'
+# export ANTHROPIC_BASE_URL='your-endpoint'
+# export HTTP_PROXY=http://127.0.0.1:7892
+# export HTTPS_PROXY=$HTTP_PROXY
+# export ALL_PROXY=socks5://127.0.0.1:7892
+# export http_proxy=$HTTP_PROXY https_proxy=$HTTPS_PROXY all_proxy=$ALL_PROXY
